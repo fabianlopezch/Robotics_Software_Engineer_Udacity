@@ -4,10 +4,10 @@ import numpy as np
 # Define a function to compute the arm configuration
 def compute_arm_config(link1_length, link2_length, joint0_angle, joint1_angle):
     # TODO: compute the (x, y) position of the p1 joint and the end effector at p2.  
-    joint1_x = 0
-    joint1_y = 0
-    p2_x = 0
-    p2_y = 0
+    joint1_x = link1_length * np.cos(joint0_angle)
+    joint1_y = link1_length * np.sin(joint0_angle)
+    p2_x = joint1_x + link2_length * np.cos(joint0_angle + joint1_angle)
+    p2_y = joint1_y + link2_length * np.sin(joint0_angle + joint1_angle)
     return joint1_x, joint1_y, p2_x, p2_y
     
 # Generate random link lengths and joint angles
